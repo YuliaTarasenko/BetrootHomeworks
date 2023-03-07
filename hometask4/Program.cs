@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            MaxValue();
-            MaxValue(10, 156, 1);
-            MaxValue(14, 5, 22, 18);
+            //MaxValue();
+            //MaxValue(10, 156, 1);
+            //MaxValue(14, 5, 22, 18);
 
-            MinValue();
-            MinValue(3, 5, 16);
-            MinValue(4, 10, 1, 2);
+            //MinValue();
+            //MinValue(3, 5, 16);
+            //MinValue(4, 10, 1, 2);
 
             Console.WriteLine("Enter x: ");
             var stringX = Console.ReadLine();
@@ -18,12 +18,13 @@
             Console.WriteLine("Enter y: ");
             var stringY = Console.ReadLine();
             int.TryParse(stringY, out int y);
-            TrySumIfOdd(x, y);
+            var result = TrySumIfOdd(x, y);
+            if (result == false) Console.WriteLine(x+y);
             Console.WriteLine();
 
-            Repeat("text", 4);
-        }
+            //Repeat("text", 4);
 
+        }
         static void MaxValue()
         { 
             var rand = new Random();
@@ -80,17 +81,17 @@
             return result;
         }
 
-        static bool TrySumIfOdd(int x, int y)
-        {
-            int sum = x + y;
-            if (sum%2 == 1)
-            {
-                Console.WriteLine("Sum is odd and = " + sum);
-                return true;
-            }
-            Console.WriteLine("Sum = " + sum);
-            return false;
-        }
+        static bool TrySumIfOdd(int x, int y) => (x + y) % 2 == 1 ? true : false;
+        //{
+        //    int sum = x + y;
+        //    if (sum%2 == 1)
+        //    {
+        //        Console.WriteLine("Sum is odd and = " + sum);
+        //        return true;
+        //    }
+        //    Console.WriteLine("Sum = " + sum);
+        //    return false;
+        //}
 
         static void Repeat (string text, int count)
         {
