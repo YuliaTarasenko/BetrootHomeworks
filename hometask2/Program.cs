@@ -1,6 +1,6 @@
 ﻿Assignments();
 MathEquations();
-//Dates();
+Dates();
 void Assignments()
 {
     int val1 = 4;
@@ -43,20 +43,11 @@ void MathEquations()
 
 void Dates()
 {
-    var datetime = DateTime.Now;
-    var days = DateTime.DaysInMonth( datetime.Year, datetime.Month );
-
-    Console.WriteLine(days);
-    //var dateNY = datetime.Year + 1; 
-    //var dateLY = datetime.Year - 1;
-    
-    //Console.WriteLine(dateNY); Console.WriteLine(dateLY);
-    //Console.WriteLine("X days left to New Year");
-    //Console.WriteLine("Y days passed from New Year");
-    //Console.WriteLine("Inpute date: ");
-    //var strDate = Console.ReadLine();
-    //DateOnly.TryParse(strDate, out var dateonly);
-    //Console.WriteLine($"Your date is - {dateonly}");
-    //Console.WriteLine("X days left to New Year from your date");
-    //Console.WriteLine("Y days passed from New Year since your date");
+    DateTime today = DateTime.Today;
+    DateTime now = DateTime.Now;
+    DateTime newYear = new DateTime(today.Year + 1, 1, 1);
+    TimeSpan timeUntilNewYear = newYear - today;
+    TimeSpan timeSinceNewYear = today - new DateTime(today.Year, 1, 1);
+    Console.WriteLine(timeUntilNewYear.Days + " days left to New Year");
+    Console.WriteLine(timeSinceNewYear.Days + " days passed from New Year");
 }
