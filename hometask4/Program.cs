@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            //MaxValue();
-            //MaxValue(10, 156, 1);
-            //MaxValue(14, 5, 22, 18);
+            MaxValue();
+            MaxValue(1, 14, 10);
+            MaxValue(14, 5, 22, 18);
 
-            //MinValue();
-            //MinValue(3, 5, 16);
-            //MinValue(4, 10, 1, 2);
+            MinValue();
+            MinValue(3, 5, 16);
+            MinValue(4, 10, 1, 2);
 
             Console.WriteLine("Enter x: ");
             var stringX = Console.ReadLine();
@@ -18,11 +18,10 @@
             Console.WriteLine("Enter y: ");
             var stringY = Console.ReadLine();
             int.TryParse(stringY, out int y);
-            var result = TrySumIfOdd(x, y);
-            if (result == false) Console.WriteLine(x+y);
+            var isOdd = TrySumIfOdd(x, y, out int sum);
             Console.WriteLine();
 
-            //Repeat("text", 4);
+            Repeat("text", 4);
 
         }
         static void MaxValue()
@@ -35,13 +34,12 @@
             Console.WriteLine();
         }
 
-        static int MaxValue(int x, int y, int z)
+        static int MaxValue(int a, int b, int c)=> Math.Max(Math.Max(a, b),c);
+
+        static int MaxValue(params int[] values)
         {
-            int[]a = { x, y, z };
-            var result = a.Max();
-            Console.WriteLine($"x = {x}; y = {y}; z = {z};  Max Value = {result}");
-            Console.WriteLine();
-            return result;
+            int max = values.Max();
+            return max;
         }
 
         static int MaxValue(int a, int b, int c, int d)
@@ -52,6 +50,8 @@
             Console.WriteLine();
             return result;
         }
+
+        
 
         static void MinValue()
         {
@@ -81,17 +81,21 @@
             return result;
         }
 
-        static bool TrySumIfOdd(int x, int y) => (x + y) % 2 == 1 ? true : false;
-        //{
-        //    int sum = x + y;
-        //    if (sum%2 == 1)
-        //    {
-        //        Console.WriteLine("Sum is odd and = " + sum);
-        //        return true;
-        //    }
-        //    Console.WriteLine("Sum = " + sum);
-        //    return false;
-        //}
+        static bool TrySumIfOdd(int start,int end, out int sum)
+        {
+            sum = 0;
+            if(start == end) return false;
+            if(start >end)
+            {
+                int temp = start;
+                start = end;
+                end = temp;
+            }
+            for (var i = start+1; i <end; i++)
+                sum += i;
+            bool isOdd = sum % 2 == 1;
+            return isOdd;
+        }
 
         static void Repeat (string text, int count)
         {
