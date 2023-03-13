@@ -4,6 +4,23 @@ namespace Hometask5
 {
     internal class Program
     {
+        enum SortAlgorithmType
+        {
+            SelectionSort,
+            BubbleSort,
+            InsertionSort
+        }
+
+        enum OrderBy
+        {
+            Asc,
+            Desc
+        }
+
+        static void Sort(int[] array, SortAlgorithmType type, OrderBy order)
+        {
+            
+        }
         static void Main(string[] args)
         {
             int[] array1 = CreateRandArray(10);
@@ -12,6 +29,7 @@ namespace Hometask5
             BubbleSort(array1);
             InsertionSort(array1);
             DisplayArray(array1);
+
             int[,] array2 = CreateRandArray(3, 4);
             DisplayArray(array2);
             int[,,] array3 = CreateRandArray(2, 3, 4);
@@ -111,19 +129,24 @@ namespace Hometask5
                 int minIndex = i;
                 for(int j = i + 1; j < size; j++ )
                 {
-                    if (array[j] < array[minIndex] )
+                    if (array[j] > array[minIndex] )
                         minIndex = j;                    
                 }
                 int temp = array[minIndex];
                 array[minIndex] = array[i];
                 array[i] = temp;
             }
+
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
         }
 
-        static void BubbleSort(int[]array)
+        static void BubbleSort(int[] array)
         {
             int size = array.Length;
-            for(int i = 0; i < size - 1 ; i++ )
+            for (int i = 0; i < size - 1; i++)
             {
                 for (int j = 0; j < size - i - 1; j++)
                 {
