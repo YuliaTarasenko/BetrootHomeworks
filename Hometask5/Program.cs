@@ -15,20 +15,19 @@ namespace Hometask5
         {
             Asc,
             Desc
-        }
+        }        
 
-        static void Sort(int[] array, SortAlgorithmType type, OrderBy order)
-        {
-            
-        }
         static void Main(string[] args)
         {
             int[] array1 = CreateRandArray(10);
             DisplayArray(array1);
-            SelectionSort(array1);
-            BubbleSort(array1);
-            InsertionSort(array1);
+            int[] sortedArray1 = Sort(array1, SortAlgorithmType.SelectionSort, OrderBy.Asc);
             DisplayArray(array1);
+            int[] sortedArray2 = Sort(array1, SortAlgorithmType.BubbleSort, OrderBy.Desc);
+            DisplayArray(array1);
+            int[] sortedArray3 = Sort(array1, SortAlgorithmType.InsertionSort, OrderBy.Desc);
+            DisplayArray(array1);
+
 
             int[,] array2 = CreateRandArray(3, 4);
             DisplayArray(array2);
@@ -121,7 +120,18 @@ namespace Hometask5
             return array;
         }
 
-        static void SelectionSort(int[] array)
+        static int[] Sort(int[] array, SortAlgorithmType type, OrderBy order, params int[] numbers)
+        {
+            switch (type)
+            {
+                case SortAlgorithmType.SelectionSort: return SelectionSort(array, order);
+                case SortAlgorithmType.BubbleSort: return BubbleSort(array, order);
+                case SortAlgorithmType.InsertionSort: return InsertionSort(array, order);
+                default: return array;
+            }
+        }
+
+        static int[] SelectionSort(int[] array, OrderBy order)
         {
             int size = array.Length;
             for(int i = 0; i < size - 1; i++ )
@@ -129,52 +139,95 @@ namespace Hometask5
                 int minIndex = i;
                 for(int j = i + 1; j < size; j++ )
                 {
-                    if (array[j] > array[minIndex] )
-                        minIndex = j;                    
+                    if(order == OrderBy.Asc && array[j] < array[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                    else if (order == OrderBy.Desc && array[j] > array[minIndex])
+                    { 
+                        minIndex = j;
+                    }
                 }
                 int temp = array[minIndex];
                 array[minIndex] = array[i];
                 array[i] = temp;
             }
-
-            for (int i = 0; i < size; i++)
-            {
-                Console.WriteLine(array[i]);
-            }
+            return array;
         }
 
-        static void BubbleSort(int[] array)
+        static int[] BubbleSort(int[] array, OrderBy order)
         {
             int size = array.Length;
             for (int i = 0; i < size - 1; i++)
             {
                 for (int j = 0; j < size - i - 1; j++)
                 {
-                    if (array[j] > array[j + 1])
+                    if(order == OrderBy.Asc && array[j] > array[j+1])
                     {
                         int temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }
+                    else if (order == OrderBy.Desc && array[j] < array[j+1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
                     }
                 }
             }
+            return array;
         }
 
-        static void InsertionSort(int[] array)
+        static int[] InsertionSort(int[] array, OrderBy order)
         {
             int size = array.Length;
             for (int i = 1; i < size; i++)
             {
                 int key = array[i];
                 int j = i - 1;
-                while (j >= 0 && array[j] > key)
+                if(order == OrderBy.Asc)
                 {
-                    array[j+1] = array[j];
-                    j = j - 1;
+                    while (j >= 0 && array[j] > key)
+                    {
+                        array[j + 1] = array[j];
+                        j--;
+                    }
+                }
+                else if ( order == OrderBy.Desc)
+                {
+                    while (j >= 0 && array[j] < key)
+                    {
+                        array[j + 1] = array[j];
+                        j--;
+                    }
                 }
 
                 array[j + 1] = key;
             }
+            return array;
         }
+
+        //static int[,,] Sort3d()
+        //{
+        //    // sample 3x4x5 array
+        //    int[,,] myArray = new int[3, 4, 5]
+        //    {
+        //    { { 6, 5, 4, 3, 2 }, { 1, 2, 3, 4, 5 }, { 6, 5, 4, 3, 2 }, { 1, 2, 3, 4, 5 } },
+        //    { { 9, 8, 7, 6, 5 }, { 4, 5, 6, 7, 8 }, { 9, 8, 7, 6, 5 }, { 4, 5, 6, 7, 8 } },
+        //    { { 3, 2, 1, 0, 9 }, { 8, 7, 6, 5, 4 }, { 3, 2, 1, 0, 9 }, { 8, 7, 6, 5, 4 } }
+        //    };
+        //    // create an one-dimensional temp array
+        //    int[] flatArray = new int[myArray.Length];
+        //    // transfer the 3d array to 1d
+        //    Buffer.BlockCopy(myArray, 0, flatArray,
+        //        0, sizeof(int) * myArray.Length);
+        //    // sort 1d array
+        //    Array.Sort(flatArray);
+        //    // transfer the sorted 1d array back to the 3d one
+        //    Buffer.BlockCopy(flatArray, 0, myArray,
+        //        0, sizeof(int) * myArray.Length);
+        //    return myArray;
+        //}
     }
 }
