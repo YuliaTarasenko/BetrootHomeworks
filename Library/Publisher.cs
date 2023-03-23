@@ -8,7 +8,7 @@ namespace Library
 {
     internal class Publisher
     {
-        public string Name;
+        public string Name { get; set; }
         public int NumberOfBooks { get; set; }
         public List <Book> Books { get; set; }
         public List <Author> Authors { get; set; }

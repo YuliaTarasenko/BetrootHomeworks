@@ -4,25 +4,23 @@
     {
         static void Main(string[] args)
         {
-            Book book = new Book();
-            Genre genre = new Genre();
-            genre.Name = "Genre 1";
-            book.Name = "Test";
-            book.Pages = 123;
-            Author author = new Author();
-            author.Name = "Author 1";
+            Book book1 = new Book("Story", 420);
+            Author author1 = new Author("John Dou");
+            book1.Author = new List<Author>();
+            book1.Author.Add(author1);
+            author1.ID = 1;
+            author1.Books = new List<Book>();
+            author1.Books.Add(book1);
             Publisher publisher = new Publisher();
-            publisher.Name = "Publisher 1";
-            //author.Publisher.Add(publisher);
-            //author.Books.Add(book);
-            //publisher.Authors.Add(author);
-            //publisher.Books.Add(book);
-            //publisher.Genres.Add(genre);
-            book.Genre = genre;
-            book.Author = author;
-            book.Publisher = publisher;
-            book.Print();
-          
+            publisher.Name = "Vivat";
+            Genre genre = new Genre();
+            genre.Name = "Fantazy";
+            publisher.Authors = new List<Author>();
+            publisher.Authors.Add(author1);
+            publisher.Books = new List<Book>();
+            publisher.Books.Add(book1);
+            book1.Genre = new List<Genre>();
+            book1.Genre.Add(genre);
         }
     }
 }

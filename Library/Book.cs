@@ -8,20 +8,22 @@ namespace Library
 {
     internal class Book
     {
-        public string Name;
-        public int Pages;
-        public Author Author;
+        private string Name;
+        private int Pages;
+        public string Description { get; set; }
+        public List<Author> Author { get; set; }
         public int Id { get; set; }
-        public Genre Genre { get; set; }
-        public Publisher Publisher { get; set; }     
+        public List<Genre> Genre { get; set; }
+        public List<Publisher> Publisher { get; set; }     
         
-        public void Print()
+        public Book (string name)
         {
-            Console.WriteLine(Name);
-            Console.WriteLine(Pages);
-            Console.WriteLine(Author.Name);
-            Console.WriteLine(Genre.Name);
-            Console.WriteLine(Publisher.Name);
+            Name = name;
+        }
+        public Book (string name, int pages)
+        {
+            Name = name;
+            Pages = pages;
         }
     }
 }

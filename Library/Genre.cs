@@ -8,6 +8,6 @@ namespace Library
 {
     public class Genre
     {
-        public string Name;
+        public string Name { get; set; }
     }
 }
