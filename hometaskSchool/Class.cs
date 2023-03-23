@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace hometaskSchool
 {
-    public class Lesson
+    public class Class
     {
-        public string Name { get; set; }
-        public List<Class> Classes { get; set; }
+        public int Id { get; set; }
+        public List<Student> Students { get; set; }
         public List<Teacher> Teachers { get; set; }
+        public List<Lesson> Lessons { get; set; }
     }
 }

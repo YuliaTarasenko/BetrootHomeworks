@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace hometaskSchool
 {
-    internal class ClassRoom
+    public class Subject
     {
+        public string Name { get; set; }
     }
 }
