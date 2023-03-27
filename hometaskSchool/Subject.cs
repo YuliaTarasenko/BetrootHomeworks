@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace hometaskSchool
 {
-    public class Subject
+    public enum Subjects
     {
-        public string Name { get; set; }
+        Math,
+        Literature,
+        English,
+        Reading,
+        German,
+        Sport
     }
 }
