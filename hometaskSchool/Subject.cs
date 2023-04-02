@@ -8,7 +8,7 @@ namespace hometaskSchool
 {
     public enum Subjects
     {
-        Math,
+        Mathematic,
         Literature,
         English,
         Reading,

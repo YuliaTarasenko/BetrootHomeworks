@@ -8,17 +8,19 @@ namespace hometaskSchool
 {
     public class Student
     {
-        private string name;
+        private string firstName;
         private string lastName;
-        public string Name { get; set; }
+        private int age;
+        public int Id { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Class Class { get; set; }
-        
-        public Student(string name, string lastName, Class c)
+        public int Age { get; set; }
+
+        public Student(string firstName, string lastName, int age)
         {
-            Name = name;
-            LastName = lastName;
-            Class = c;
+            this.FirstName = firstName; 
+            this.LastName = lastName;
+            this.Age = age;
         }
     }
 }

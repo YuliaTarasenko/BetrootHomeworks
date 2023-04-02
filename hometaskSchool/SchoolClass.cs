@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 
 namespace hometaskSchool
 {
-    public class Class
+    public class SchoolClass
     {
-        protected int Number { get; set; }
+        public int Id { get; set; }
+        public int GradeLevel { get; set; }
         public List<Student> Students { get; set; }
         public List<Teacher> Teachers { get; set; }
         public List<Lesson> Lessons { get; set; }
-
-        public Class(int number) 
-        { 
-            Number = number;
+        //public Subjects Subjects { get; set; }
+        public SchoolClass() 
+        {
+            Students = new List<Student>();
+            Teachers = new List<Teacher>();
+            Lessons = new List<Lesson>();
         }
 
-        public void AddStudent(Student student)
+
+        public void AddStudentByAge(Student student, int age)
         {
-            Students.Add(student);
+            if (student.Age == age)
+            {
+                Students.Add(student);
+            }
         }
 
         public void RemoveStudent(Student student)

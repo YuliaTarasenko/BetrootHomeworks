@@ -16,31 +16,32 @@ namespace hometaskSchool
         public Subjects Subject { get; set; }
         public int Id { get; set; }
         public List<Lesson> Lessons { get; set; }
-        public List<Class> Classes { get; set; }
+        public List<SchoolClass> Classes { get; set; }
 
-        public Teacher(string firstName,string lastName, Subjects subject)
+        public Teacher(string firstName, string lastName, Subjects subject)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Subject = subject;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Subject = subject;
         }
-
+        public Teacher()
+        {
+            Lessons = new List<Lesson>();
+            Classes = new List<SchoolClass>();
+        }
         public void AddLesson (Lesson lesson) 
         { 
             Lessons.Add(lesson);
         }    
-        
-        public void AddClass (Class c) 
-        {
-            Classes.Add(c);
-        }
 
-        public void PrintInfo ()
+        public void RemoveLesson(Lesson lesson)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"Teacher {firstName} {lastName},");
-            sb.Append($"who teaches {subject},");
-            sb.Append($"will be in class  at the lesson");
+            Lessons.Remove(lesson);
+        }
+        
+        public void AddClass (SchoolClass schoolclass) 
+        {
+            Classes.Add(schoolclass);
         }
     }
 }

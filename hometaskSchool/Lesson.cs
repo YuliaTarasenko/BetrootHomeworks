@@ -9,23 +9,27 @@ namespace hometaskSchool
     public class Lesson
     {
         private string name;
-        public string Name { get; set; }
-        public List<Class> Classes { get; set; }
-        public List<Teacher> Teachers { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public SchoolClass SchoolClass { get; set; }
+        public Teacher Teacher { get; set; }
+        public Subjects Subjects { get; set; }
+        public List<Student> AttendedStudents { get; set; }
 
-        public Lesson(string name)
+        public Lesson(string name, int id, DateTime date, SchoolClass schoolClass, Teacher teacher, Subjects subjects)
         {
-            Name = name;
+            this.name = name;
+            Id = id;
+            Date = date;
+            SchoolClass = schoolClass;
+            Teacher = teacher;
+            Subjects = subjects;
+            AttendedStudents = new List<Student>();
         }
 
-        public void AddClass(Class c)
+        public void MarkAttendance(Student student)
         {
-            Classes.Add(c);
-        }
-
-        public void AddTeacher(Teacher teacher)
-        {
-            Teachers.Add(teacher);
+            AttendedStudents.Add(student);
         }
     }
 }
