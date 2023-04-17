@@ -15,7 +15,7 @@ namespace InternetShop.Interfaces
         List<OrderItem> OrderItems { get; set; }
         double TotalAmount { get; set; }
 
-       void AddItems(OrderItem item);
+       List<OrderItem> AddItems(Product product, int quantity);
        void RemoveItems(OrderItem item);
     }
 }

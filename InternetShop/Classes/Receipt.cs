@@ -26,11 +26,11 @@
 
             foreach (OrderItem item in Order.OrderItems)
             {
-                Console.WriteLine($"{item.Product.Name,-18}{item.Quantity,-12}{item.Product.Price,10:C}");
+                Console.WriteLine($"{item.Product.Name,-22}{item.Quantity,-10}{item.Product.Price} $");
             }
 
             Console.WriteLine("---------------------------------------");
-            Console.WriteLine($"Total Amount: {Order.TotalAmount:C}");
+            Console.WriteLine($"Total Amount: {Order.TotalAmount} $");
             Console.WriteLine("=======================================");
         }
     }

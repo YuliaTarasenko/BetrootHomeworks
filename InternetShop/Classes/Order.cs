@@ -10,34 +10,34 @@ namespace InternetShop
         public DateTime OrderDate { get; set; }
         public double TotalAmount { get; set; }
         public Cashier Cashier { get; set; }
-        public Order (int  orderId, Customer customer, List<OrderItem> orderItems, DateTime orderDate,Cashier cashier)
+        public Order (int  orderId, Customer customer, DateTime orderDate,Cashier cashier)
         {
             OrderId = orderId;
             Customer = customer;
-            OrderItems = orderItems;
             OrderDate = orderDate;
             Cashier = cashier;
-
-            TotalAmount = CalculateTotalAmount();
+            OrderItems = new List<OrderItem> ();
         }
 
-        public void AddItems(OrderItem item)
+        public List<OrderItem> AddItems(Product product, int quantity)
         {
+            var item = new OrderItem(product, quantity);
             OrderItems.Add(item);
+            return OrderItems;
         }
 
         public void RemoveItems(OrderItem item)
         {
             OrderItems.Remove(item);
         }
-        private double CalculateTotalAmount()
+        public double CalculateTotalAmount()
         {
-            double total = 0;
+            TotalAmount = 0;
             foreach(OrderItem item in OrderItems)
             {
-                total += item.Quantity * item.Product.Price;
+                TotalAmount += item.Quantity * item.Product.Price;
             }
-            return total;
+            return TotalAmount;
         }
     }
 }
