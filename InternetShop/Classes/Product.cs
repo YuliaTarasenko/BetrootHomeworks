@@ -11,15 +11,13 @@ namespace InternetShop
         public bool InStock { get; set; }
         public int Quantity { get; set; }
 
-        public Product (int id, string name, string description, double price, int quantity, bool inStock)
+        public Product (int id, string name, string description, double price, int quantity)
         {
             Id = id;
             Name = name;
             Description = description;
             Price = price;
             Quantity = quantity;
-
-            InStock = IsStock(quantity);
         }
 
         public int AddQuantity (int quantity)

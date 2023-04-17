@@ -2,10 +2,10 @@
 {
     internal class Receipt
     {
-        public Order Order { get; set; }
+        public IOrder Order { get; set; }
         public DateTime ReceiptDate { get; set; }
 
-        public Receipt(Order order, DateTime receiptDate)
+        public Receipt(IOrder order, DateTime receiptDate)
         {
             Order = order;
             ReceiptDate = receiptDate;
@@ -16,6 +16,7 @@
             Console.WriteLine("=======================================");
             Console.WriteLine("               RECEIPT                 ");
             Console.WriteLine("=======================================");
+            Console.WriteLine($"Cashier Name: {Order.Cashier.FirstName} {Order.Cashier.LastName}");
             Console.WriteLine($"Date: {ReceiptDate.ToShortDateString()} Time: {ReceiptDate.ToShortTimeString()}");
             Console.WriteLine($"Order ID: {Order.OrderId}");
             Console.WriteLine($"Customer Name: {Order.Customer.FirstName} {Order.Customer.LastName}");

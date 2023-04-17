@@ -8,7 +8,9 @@ namespace InternetShop.Interfaces
 {
     internal interface ICustomer
     {
-        int CustomerId { get; set; }
+        string ShippingAddress { get; set; }
+        string PhoneNumber { get; set; }
+
         List<Order> OrderList { get; set; }
         string GetCustomerDetails();
     }

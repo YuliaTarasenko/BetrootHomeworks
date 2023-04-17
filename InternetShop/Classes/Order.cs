@@ -1,4 +1,6 @@
-﻿namespace InternetShop
+﻿using InternetShop.Classes;
+
+namespace InternetShop
 {
     internal class Order: IOrder
     {
@@ -7,12 +9,14 @@
         public List<OrderItem> OrderItems { get; set; }
         public DateTime OrderDate { get; set; }
         public double TotalAmount { get; set; }
-        public Order (int  orderId, Customer customer, List<OrderItem> orderItems, DateTime orderDate)
+        public Cashier Cashier { get; set; }
+        public Order (int  orderId, Customer customer, List<OrderItem> orderItems, DateTime orderDate,Cashier cashier)
         {
             OrderId = orderId;
             Customer = customer;
             OrderItems = orderItems;
             OrderDate = orderDate;
+            Cashier = cashier;
 
             TotalAmount = CalculateTotalAmount();
         }

@@ -5,14 +5,16 @@ namespace InternetShop
 {
     internal class Customer:Person, ICustomer
     {   
-        public int CustomerId { get; set; }
         public List<Order> OrderList { get; set; }
+        public string ShippingAddress { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public Customer(int customerId, int personId, string firstname, string lastname, int age, string email,
+        public Customer(int id, string firstname, string lastname, int age, string email,
             string phoneNumber, string address) :
-            base(personId, firstname, lastname, age, email, phoneNumber, address)
+            base(id, firstname, lastname, age, email)
         {
-            CustomerId = customerId;
+            ShippingAddress = address;
+            PhoneNumber = phoneNumber;
             OrderList = new List<Order>();
         }
 
@@ -30,7 +32,14 @@ namespace InternetShop
 
         public void RemoveOrder(Order order)
         {
-            OrderList.Remove(order);
+            if (OrderList.Any(o => o.OrderId == order.OrderId))
+            {
+                OrderList.Remove(order);
+            }
+            else
+            {
+                Console.WriteLine("This order is not exict");
+            }
         }
 
         public void UpdateOrder(Order order)
@@ -44,8 +53,13 @@ namespace InternetShop
 
         public string GetCustomerDetails()
         {
-            string details = $"Customer ID: {CustomerId}\nName: {FirstName} {LastName}\nEmail: {Email}\nPhone: {PhoneNumber}";
+            string details = $"Customer ID: {Id}\nName: {FirstName} {LastName}\nEmail: {Email}\nPhone: {PhoneNumber}";
             return details;
+        }
+
+        public void SaveOrder(Order order)
+        {
+            OrderList.Add(order);
         }
 
         public string GetCustomerOrders()
