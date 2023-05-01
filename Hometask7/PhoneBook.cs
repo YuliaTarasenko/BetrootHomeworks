@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace Hometask7
 {
@@ -21,14 +19,6 @@ namespace Hometask7
         public void RemoveContact(Person person)
         {
             Persons.Remove(person);
-        }
-
-        public void PrintInfo()
-        {
-            foreach (Person person in Persons) 
-            {
-                Console.WriteLine($"{person.FirstName}\t {person.LastName}\t {person.PhoneNumber}");
-            }
         }
 
         public void Serialize()

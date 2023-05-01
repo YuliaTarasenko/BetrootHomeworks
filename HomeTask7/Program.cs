@@ -20,35 +20,34 @@
             {
                 Console.WriteLine($"{person.FirstName}\t {person.LastName}\t {person.PhoneNumber}");
             }
-            //phoneBook.PrintInfo();
 
-            //Console.WriteLine("Enter search term:");
-            //string searchTerm = Console.ReadLine();
+            Console.WriteLine("Enter search term:");
+            string searchTerm = Console.ReadLine();
 
-            //List<Person> searchResults = phoneBook.SearchContacts(searchTerm);
+            List<Person> searchResults = phoneBook.SearchContacts(searchTerm);
 
-            //if (searchResults.Count > 0)
-            //{
-            //    Console.WriteLine($"Found {searchResults.Count} contact(s) matching '{searchTerm}':");
-            //    foreach (Person contact in searchResults)
-            //    {
-            //        Console.WriteLine($"- {contact.FirstName} {contact.LastName}, {contact.PhoneNumber}");
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"No contacts found matching '{searchTerm}'.");
-            //}
+            if (searchResults.Count > 0)
+            {
+                Console.WriteLine($"Found {searchResults.Count} contact(s) matching '{searchTerm}':");
+                foreach (Person contact in searchResults)
+                {
+                    Console.WriteLine($"- {contact.FirstName} {contact.LastName}, {contact.PhoneNumber}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"No contacts found matching '{searchTerm}'.");
+            }
 
-            //Person binarySearch = phoneBook.BinarySearchByName("Sam");
-            //if (binarySearch != null)
-            //{
-            //    Console.WriteLine($"Found contact: {binarySearch.FirstName} {binarySearch.LastName} {binarySearch.PhoneNumber}");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Contact not found.");
-            //}
+            Person binarySearch = phoneBook.BinarySearchByName("Sam");
+            if (binarySearch != null)
+            {
+                Console.WriteLine($"Found contact: {binarySearch.FirstName} {binarySearch.LastName} {binarySearch.PhoneNumber}");
+            }
+            else
+            {
+                Console.WriteLine("Contact not found.");
+            }
         }
     }
 }
