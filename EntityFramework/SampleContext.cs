@@ -1,4 +1,5 @@
 ﻿using Azure;
+using EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework
@@ -31,7 +32,7 @@ namespace EntityFramework
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
         optionsBuilder.UseSqlServer(
-            "Data Source=LAPTOP-47TRIN9C\\MSSQLSERVER01;" + "Initial Catalog=Shopdb;"
+            "Data Source=LAPTOP-47TRIN9C\\MSSQLSERVER01;" + "Initial Catalog=Shop;"
             + "Integrated Security=True;" + "TrustServerCertificate = True");
     }
 }

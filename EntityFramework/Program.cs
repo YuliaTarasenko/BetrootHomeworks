@@ -1,4 +1,5 @@
 ﻿using EntityFramework;
+using EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 
 //CustomersCount();
@@ -6,8 +7,20 @@ using Microsoft.EntityFrameworkCore;
 //AddCustomer();
 //DeleteCustomer(51);
 //UpdateCustomer(2);
-GetRelaredData();
+//GetRelaredData();
+CreateOrderWithDetails()
 Console.WriteLine();
+
+void CreateOrderWithDetails()
+{
+    using var context = new SampleContext();
+    var newOrder = new Order(1, 1, 1, 1, DateTime.Now);
+    context.Orders.Add(newOrder);
+    context.SaveChanges();
+    var orderWithDetails = context.Orders.
+        FirstOrDefault(o => o.Id == 1); 
+    Console.WriteLine();
+}
 
 void GetRelaredData()
 {
