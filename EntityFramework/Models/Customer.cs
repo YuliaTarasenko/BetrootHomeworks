@@ -4,6 +4,6 @@
     {
         public string FirstName { get; set; }
         public string Lastname { get; set; }
-        public ICollection<Order> Order { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

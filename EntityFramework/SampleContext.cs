@@ -14,21 +14,24 @@ namespace EntityFramework
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Customer>().
-                HasMany(o=>o.Order).
-                WithOne(c=>c.Customer).
-                HasForeignKey(c=>c.CustomerId).
+                HasMany(o => o.Orders).
+                WithOne(c => c.Customer).
+                HasForeignKey(c => c.CustomerId).
                 IsRequired();
             builder.Entity<Employee>().
-                HasMany(o => o.Order).
+                HasMany(o => o.Orders).
                 WithOne(c => c.Employee).
                 HasForeignKey(c => c.EmployeeId).
                 IsRequired();
-            builder.Entity<Product>().
-                HasMany(o => o.Order).
-                WithMany(p => p.Product).
+            builder.Entity<Order>().
+                HasMany(o => o.Products).
+                WithMany(p => p.Orders).
                 UsingEntity<OrderProduct>(
-                l => l.HasOne<Order>().WithMany().HasForeignKey(e => e.OrderId),
-                r => r.HasOne<Product>().WithMany().HasForeignKey(e => e.ProductId));
+                l => l.HasOne(op => op.Product).WithMany().
+                HasForeignKey(op => op.ProductId),
+                r => r.HasOne(op => op.Order).WithMany().
+                HasForeignKey(op => op.OrderId),
+                t => t.HasKey(op => new{op.ProductId, op.OrderId}));
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
         optionsBuilder.UseSqlServer(

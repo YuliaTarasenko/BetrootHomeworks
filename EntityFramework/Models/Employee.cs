@@ -3,6 +3,6 @@
     public sealed record Employee : EntityWithId
     {
         public string Name { get; set; }
-        public ICollection<Order> Order { get; set; } 
+        public List<Order> Orders { get; set; } 
     }
 }
