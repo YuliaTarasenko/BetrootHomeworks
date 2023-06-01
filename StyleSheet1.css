@@ -1,0 +1,97 @@
+﻿.header {
+    text-align: center;
+    font-family: 'Playfair', serif;
+}
+
+.links{
+    text-align:center;
+    font-family:'Playfair', serif;
+    font-size: 20px;
+    margin-bottom:10px;
+}
+
+
+body
+{    
+}
+
+.div1 {
+    text-align: center;
+    background-color: aliceblue;
+    font-family: 'Playfair', serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.div2 {
+    text-align: center;
+    background-color: aliceblue;
+    font-family: 'Playfair', serif;
+    font-size: 15px
+}
+
+.circle-image{
+    border-radius:50%;
+    overflow:hidden
+}
+
+.links-list {
+    text-align: center;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: aliceblue;
+    color: white;
+    text-decoration: none;
+}
+
+.list-item:hover {
+        background-color:mediumaquamarine;
+}
+
+.my-div2{
+    display:block;
+    text-align: center;
+    font-family: 'Playfair', serif;
+    font-size: 20px;
+    background-color: aliceblue;
+    color: black;
+    margin-left: 200px;
+    margin-right:200px;
+    margin-bottom:20px;
+    padding: 10px;
+}
+
+.my-div {
+    display: block;
+    text-align: center;
+    font-family: 'Playfair', serif;
+    font-size: 20px;
+    background-color: aliceblue;
+    color: black;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 20px;
+    padding: 10px;
+    column-count: 2;
+    column-rule-style: solid;
+    column-rule-width: 2px;
+}
+
+.button {
+    background-color: aliceblue;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Playfair', serif;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+        background-color: mediumaquamarine;
+}
