@@ -1,0 +1,36 @@
+﻿@using MVC.Logic;
+@inject MyContext Ctx
+
+@{
+    ViewData["Title"] = "Orders List";
+    var bottomOrders = Ctx.Orders.OrderByDescending(o => o.Id).Take(10).ToList();
+    var us = Ctx.Users.Select(u => new UserDto(u.FirstName, u.LastName)).ToList();
+}
+<div class="row">
+    <div class="col">
+        <h1>Orders List</h1>
+    </div>
+    <div class="col">
+        <a asp-action="AddOrder" class="btn btn-primary">Add new Order</a>
+    </div>
+</div>
+
+
+<table class="table table-success table-striped-columns">
+    <thead>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>User</th>
+    <tbody>
+        @foreach (var order in bottomOrders)
+        {
+            <tr>
+                <td>@order.ProductName</td>
+                <td>@order.Quantity</td>
+                <td>@order.Price</td>
+                <td>@order.Id</td>
+            </tr>
+        }
+    </tbody>
+</table>
