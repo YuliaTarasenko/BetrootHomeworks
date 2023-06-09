@@ -43,6 +43,7 @@ namespace MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            //create minimal APIs
 
             app.Run();
         }

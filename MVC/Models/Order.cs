@@ -1,4 +1,8 @@
-﻿namespace MVC.Models
+﻿using Microsoft.EntityFrameworkCore;
+using MVC.Logic;
+using static NuGet.Packaging.PackagingConstants;
+
+namespace MVC.Models
 {
     public record Order
     {
@@ -8,6 +12,5 @@
         public decimal Price { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-      
     }
 }

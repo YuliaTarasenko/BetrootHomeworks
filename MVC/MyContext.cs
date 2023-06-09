@@ -7,10 +7,9 @@ namespace MVC
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>().HasMany(o => o.Orders).WithOne(u => u.User).HasForeignKey(u => u.UserId);
+            builder.Entity<Order>().HasOne(o => o.User).WithMany(u => u.Orders).HasForeignKey(o => o.UserId);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
       optionsBuilder.UseSqlServer(

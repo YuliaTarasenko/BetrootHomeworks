@@ -1,10 +1,12 @@
 ﻿@using MVC.Logic;
+@using Microsoft.EntityFrameworkCore;
 @inject MyContext Ctx
 
 @{
+    
+    //var us = Ctx.Users.Select(u => new UserDto(u.FirstName, u.LastName)).ToList();
+    var bottomOrders = Ctx.Orders.Include(o=>o.User).OrderByDescending(o => o.Id).Take(10).ToList();
     ViewData["Title"] = "Orders List";
-    var bottomOrders = Ctx.Orders.OrderByDescending(o => o.Id).Take(10).ToList();
-    var us = Ctx.Users.Select(u => new UserDto(u.FirstName, u.LastName)).ToList();
 }
 <div class="row">
     <div class="col">
@@ -25,11 +27,12 @@
     <tbody>
         @foreach (var order in bottomOrders)
         {
+            var fullName = $"{order.User.FirstName} {order.User.LastName}";
             <tr>
                 <td>@order.ProductName</td>
                 <td>@order.Quantity</td>
                 <td>@order.Price</td>
-                <td>@order.Id</td>
+                <td>@fullName</td>
             </tr>
         }
     </tbody>

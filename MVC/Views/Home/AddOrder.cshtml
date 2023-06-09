@@ -5,7 +5,7 @@
 
 @{
     ViewData["Title"] = "Add Order";
-    var us = Ctx.Users.Select(u=>new UserDto(u.FirstName,u.LastName)).ToList();
+    var us = Ctx.Users.Select(u=>new ValueTuple<int,string>(u.Id,$"{u.FirstName} {u.LastName}")).ToList();
 }
 
 <h1>Orders</h1>
@@ -33,7 +33,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" class="form-control" />
+                <select asp-for="UserId" class="form-control" />
+                @foreach (var u in us)
+                {
+                    <option value="@u.Item1">@u.Item2</option>
+                }
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">

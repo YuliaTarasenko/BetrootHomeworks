@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using MVC.Models;
 using System;
+using Microsoft.EntityFrameworkCore;
+using MVC.Logic;
 
 namespace MVC.Controllers
 {
@@ -43,7 +45,7 @@ namespace MVC.Controllers
             return RedirectToAction("OrdersList");
         }
 
-
+        public IActionResult Api() => View();
 
         public IActionResult Orders()
         {
